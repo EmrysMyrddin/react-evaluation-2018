@@ -1,16 +1,17 @@
-import { connect } from 'react-redux'
-import RuleList from './RuleList'
-import { rulesLoaded } from '../../store/actions/rules'
+import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
-  rules: state.rules,
-})
+import { rulesLoaded } from '../../store/actions/rules';
+import RuleList from './RuleList';
 
-const mapDispatchToProps = dispatch => ({
-  loadRules: () => dispatch(rulesLoaded()),
-})
+const mapStateToProps = state => ( {
+	rules: state.rules,
+} )
+
+const mapDispatchToProps = dispatch => ( {
+	loadRules: () => dispatch( rulesLoaded() ),
+} )
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(RuleList)
+	mapStateToProps,
+	mapDispatchToProps,
+)( RuleList )
