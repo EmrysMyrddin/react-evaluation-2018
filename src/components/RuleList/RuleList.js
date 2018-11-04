@@ -8,10 +8,12 @@ class RuleList extends React.Component
 	static propTypes = {
 		rules: PropTypes.array,
 		loadRules: PropTypes.func,
+		filter: PropTypes.string
 	}
 
 	static defaultProps = {
 		rules: [],
+		filter: ""
 	}
 
 	componentDidMount = () =>
@@ -21,8 +23,15 @@ class RuleList extends React.Component
 
 	render()
 	{
-		const { rules } = this.props
-		return rules.map( rule => <Rule key={ rule.id } rule={ rule } /> )
+		const { rules, filter } = this.props
+
+		const filtered = rules.filter( rule => (
+			( rule.title || "" ).includes( filter )						// filtre titre
+			|| ( rule.description || "" ).includes( filter )			// filtre desc
+			|| ( rule.tags || [] ).some( k => k.includes( filter ) )	// filtre tags
+		) )
+
+		return filtered.map( rule => <Rule key={ rule.id } rule={ rule } /> )
 	}
 }
 

@@ -5,6 +5,7 @@ import RuleList from './RuleList';
 
 const mapStateToProps = state => ( {
 	rules: state.rules,
+	filter: state.filter.query
 } )
 
 const mapDispatchToProps = dispatch => ( {
