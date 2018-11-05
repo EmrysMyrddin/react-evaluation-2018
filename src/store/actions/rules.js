@@ -9,7 +9,6 @@ export const ADD_RULE = 'ADD_RULE'
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
   const rules = await res.json()
-
   dispatch({
     type: RULES_LOADED,
     payload: {
@@ -20,7 +19,6 @@ export const rulesLoaded = () => async (dispatch) => {
 
 export const doLike = id => async (dispatch) => {
   await fetch.post(`/rest/rules/${id}/likes`)
-
   dispatch({
     type: DO_LIKE,
     payload: {
@@ -30,8 +28,7 @@ export const doLike = id => async (dispatch) => {
 }
 
 export const doDislike = id => async (dispatch) => {
-  await fetch.post(`/rest/rules/${id}/dislike`)
-
+  await fetch.post(`/rest/rules/${id}/dislikes`)
   dispatch({
     type: DO_DISLIKE,
     payload: {
@@ -43,27 +40,25 @@ export const doDislike = id => async (dispatch) => {
 export const updateRule = rule => async (dispatch) => {
   const result = await fetch.put(`/rest/rules/${rule.id}`, rule)
   const updatedRule = await result.json()
-
   dispatch({
     type: UPDATE_RULE,
     payload: {
       rule: updatedRule,
     },
   })
-
   return updatedRule
 }
 
 export const addRule = rule => async (dispatch) => {
   const result = await fetch.post('/rest/rules', rule)
   const createdRule = await result.json()
-
   dispatch({
     type: ADD_RULE,
     payload: {
       rule: createdRule,
     },
   })
-
   return createdRule
 }
+
+

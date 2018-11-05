@@ -7,7 +7,6 @@ class RuleList extends React.Component {
     rules: PropTypes.array,
     loadRules: PropTypes.func,
   }
-
   static defaultProps = {
     rules: [],
   }

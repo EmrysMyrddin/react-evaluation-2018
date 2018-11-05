@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.radio-panel {
+  vertical-align: top;
+}
+.radio-panel input[type="radio"]{
+  margin-right: 5px;
+}
+.radio-panel label{
+  margin-right: 20px;
+}

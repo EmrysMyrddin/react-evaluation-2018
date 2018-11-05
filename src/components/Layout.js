@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Header from './Header'
+import Filter from './Filter'
 import RuleForm from './RuleForm'
 import RuleList from './RuleList'
 
@@ -9,6 +10,7 @@ const Layout = () => (
     <Header />
     <div className="container-fluid">
       <div className="container">
+        <Route exact path="/" component={Filter} />
         <Route exact path="/" component={RuleList} />
         <Route exact path="/new" component={RuleForm} />
         <Route exact path="/edit/:id" component={RuleForm} />
@@ -16,6 +18,5 @@ const Layout = () => (
     </div>
   </div>
 )
-
 
 export default Layout

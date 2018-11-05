@@ -23,9 +23,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 })
 
-// const RuleFormWithReduxForm = reduxForm({ name: 'ruleEdit' })(RuleForm)
-// export default connect(mapStateToProps)(RuleFormWithReduxForm)
-
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: 'ruleEdit', enableReinitialize: true, destroyOnUnmount: false }),
