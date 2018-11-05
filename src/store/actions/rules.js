@@ -60,5 +60,3 @@ export const addRule = rule => async (dispatch) => {
   })
   return createdRule
 }
-
-
