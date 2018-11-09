@@ -23,7 +23,7 @@ class Rule extends React.Component {
 
   onTitleClick = () => {
     this.setState({
-      folded: !this.state.folded || this.props.description,
+      folded: !this.props.rule.description || !this.state.folded
     })
   }
 
@@ -35,7 +35,7 @@ class Rule extends React.Component {
       <div className="panel panel-primary">
         <div className="panel-heading" role="presentation" onClick={this.onTitleClick}>
           {rule.title}
-          <i className={`pull-right glyphicon glyphicon-chevron-${folded ? 'down' : 'up'}`} />
+          <i className={`pull-right glyphicon glyphicon-chevron-${folded ? 'down' : 'up'} ${rule.description? '':'hidden'}`} />
         </div>
         <div className={`panel-body  ${folded ? 'hidden' : ''}`}>
           <p>{rule.description}</p>
