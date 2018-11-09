@@ -17,6 +17,11 @@ const Header = () => (
       <ul className="nav navbar-nav">
         <li className="active"><Link to="/">Home</Link></li>
         <li><Link to="/new">New</Link></li>
+        <li><Link to="/tri">Tri par tag</Link></li>
+        <li><Link to="/triname">Tri par noms</Link></li>
+        <li><Link to="/trilike">Rules ayant plus de likes que de dislikes</Link></li>
+        <li><Link to="/tridescription">Tri selon la description</Link></li>
+
       </ul>
     </div>
   </nav>

@@ -19,7 +19,7 @@ export const rulesLoaded = () => async (dispatch) => {
 }
 
 export const doLike = id => async (dispatch) => {
-  await fetch.post(`/rest/rules/${id}/likes`)
+  await fetch.post('/rest/rules/${id}/likes')
 
   dispatch({
     type: DO_LIKE,
@@ -30,7 +30,7 @@ export const doLike = id => async (dispatch) => {
 }
 
 export const doDislike = id => async (dispatch) => {
-  await fetch.post(`/rest/rules/${id}/dislike`)
+  await fetch.post('/rest/rules/${id}/dislike')
 
   dispatch({
     type: DO_DISLIKE,
@@ -41,7 +41,7 @@ export const doDislike = id => async (dispatch) => {
 }
 
 export const updateRule = rule => async (dispatch) => {
-  const result = await fetch.put(`/rest/rules/${rule.id}`, rule)
+  const result = await fetch.put('/rest/rules/${rule.id}', rule)
   const updatedRule = await result.json()
 
   dispatch({
