@@ -2,7 +2,7 @@ import React from 'react'
 
 // eslint-disable-next-line react/prop-types
 const Input = ({ label, input, meta }) => (
-  <div className={`form-group  ${meta.error ? 'has-error' : ''}`}>
+  <div className={`form-group  ${(meta.error && meta.touched) ? 'has-error' : ''}`}>
     <label htmlFor={input.name}>{label}</label>
     <input
       id={input.name}
@@ -10,7 +10,7 @@ const Input = ({ label, input, meta }) => (
       placeholder={label}
       {...input}
     />
-    <span className="help-block">{meta.error}</span>
+    {meta.touched && meta.error? <span className="help-block">{meta.error}</span> : ""}
   </div>
 )
 
