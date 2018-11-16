@@ -1,20 +1,37 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.css'
-import './index.css'
-// import App from './App'
-import registerServiceWorker from './registerServiceWorker'
-import Layout from './components/Layout'
-import store from './store'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import RuleList from './RuleList';
+import registerServiceWorker from './registerServiceWorker';
+import rules from './data.json'
+import 'bootstrap/dist/css/bootstrap.css';
 
+
+  // j'ai essayé de faire une barre de recherche, elle compile mais ne fonctionne pas: voir les methodes commentées dans RuleList.js
+
+registerServiceWorker();
+
+const reactElement = React.createElement('div', null, 'Hello World');
+const domElement = document.getElementById('root');
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Route path="/" component={Layout} />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('root'),
-)
-registerServiceWorker()
+  <div>
+    <div>
+
+
+    <form>Search a rule here 
+        <input type="text" onChange= {rules.searchHandler}/>
+
+        <RuleList rules={rules}/>
+
+    </form>
+      //<input type="radio" name="likes"  />
+
+    </div>
+    <div>
+
+    </div>
+
+
+
+  </div>,
+  domElement);
