@@ -28,17 +28,13 @@ class RuleSearch extends React.Component {
     console.log("On entre dans la fonction")
     console.log(test)
     const { rules } = this.props
-    rules.forEach(function(rule){
-      if ( rule.title === test){
-        console.log("On entre dans la condition")
-        console.log(rule.id)
-        return <Rule key={rule.id} rule={rule}/>
-      }
-    })
+    return rules
+      .filter((rule) => rule.title.includes(test))
+      .map(rule => <Rule key={rule.id} rule={rule}/> )
   }
 
   render() {
-    return <div><input value={this.state.texte} onChange={e => this.setState({text: e.target.value})} type="text" placeholder="Recherche..."/><button onClick={this.trier(this.state.text)}>Go</button><div>{this.trier(this.state.text)}</div></div>
+    return <div><input value={this.state.texte} onChange={e => this.setState({text: e.target.value})} type="text" placeholder="Recherche..."/><button>Go</button><div>{this.trier(this.state.text)}</div></div>
   }
 }
 
