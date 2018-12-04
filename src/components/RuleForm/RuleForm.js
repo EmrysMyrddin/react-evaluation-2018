@@ -40,7 +40,7 @@ const RuleForm = ({ handleSubmit }) => (
         <Field
           component={Input}
           name="tags"
-          label="Tags"          
+          label="Tag1,Tag2..."          
         />
         <button type="submit" className="btn btn-primary pull-right">Submit</button>
       </form>
