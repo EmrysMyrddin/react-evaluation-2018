@@ -18,7 +18,7 @@ class RuleSearch extends React.Component {
 
   render() {
     const { rules } = this.props
-    return <input type="text" placeholder="Recherche..."/>
+    return <div><input type="text" placeholder="Recherche..."/><button>Go</button></div>
   }
 }
 
