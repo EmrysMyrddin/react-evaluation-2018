@@ -32,6 +32,14 @@ module.exports = function rulesRouter(app) {
   })
 
   app.get('/rest/rules', (req, res) => {
+    const filter = req.query.filter;
+    if (filter) {
+      const rulesToReturn = _.filter(rules, (rule) => {
+        return rule.title.toLowerCase().includes(filter);
+      });
+      console.info('GET /rest/rules with filter params -> ' + req.query.filter);
+      return res.status(200).json(rulesToReturn);
+    }
     console.info('GET /rest/rules');
     return res.status(200).json(rules);
   });

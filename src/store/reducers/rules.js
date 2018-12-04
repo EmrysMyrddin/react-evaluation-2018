@@ -1,4 +1,4 @@
-import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE, REMOVE_RULE } from '../actions/rules'
+import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE, REMOVE_RULE, SEARCH_RULES } from '../actions/rules'
 
 const initialState = []
 
@@ -44,6 +44,10 @@ const rules = (state = initialState, action) => {
     case REMOVE_RULE: {
       const { rules } = action.payload;
       return rules;
+    }
+    case SEARCH_RULES: {
+      const {searchedRules} = action.payload;
+      return searchedRules;
     }
     default: {
       return state
