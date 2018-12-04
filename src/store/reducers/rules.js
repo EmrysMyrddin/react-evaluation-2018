@@ -1,4 +1,4 @@
-import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE } from '../actions/rules'
+import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE, SEARCH_RULE } from '../actions/rules'
 
 const initialState = []
 
@@ -40,6 +40,12 @@ const rules = (state = initialState, action) => {
         ...state,
         rule,
       ]
+    }
+    case SEARCH_RULE: {
+      
+
+
+      return action.payload.rules
     }
     default: {
       return state

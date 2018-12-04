@@ -16,9 +16,16 @@ class RuleSearch extends React.Component {
     this.props.loadRules()
   }
 
+  state = {
+    text: ""
+  }
+
+  rechercher = (texte) => {
+    console.log("Recherche effectuée")
+  }
+
   render() {
-    const { rules } = this.props
-    return <div><input type="text" placeholder="Recherche..."/><button>Go</button></div>
+    return <div><input value={this.state.texte} onChange={e => this.setState({text: e.target.value})} type="text" placeholder="Recherche..."/><button onClick={this.rechercher}>Go</button></div>
   }
 }
 

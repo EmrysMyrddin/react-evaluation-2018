@@ -5,6 +5,7 @@ export const DO_LIKE = 'DO_LIKE'
 export const DO_DISLIKE = 'DO_DISLIKE'
 export const UPDATE_RULE = 'UPDATE_RULE'
 export const ADD_RULE = 'ADD_RULE'
+export const SEARCH_RULE = 'SEARCH_RULE'
 
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
@@ -66,4 +67,17 @@ export const addRule = rule => async (dispatch) => {
   })
 
   return createdRule
+}
+
+export const searchRule = string => async (dispatch) => {
+  const res = await fetch.get('/rest/rules')
+  const rules = await res.json()
+
+  dispatch({
+    type: SEARCH_RULE,
+    payload: {
+      rule: string,
+    },
+  })
+  return "<h1>test</h1>"
 }
