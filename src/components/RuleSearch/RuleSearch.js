@@ -18,7 +18,7 @@ class RuleSearch extends React.Component {
 
   render() {
     const { rules } = this.props
-    return rules.map(rule => <Rule key={rule.id} rule={rule} />)
+    return <input type="text" placeholder="Recherche..."/>
   }
 }
 
