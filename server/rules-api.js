@@ -22,6 +22,15 @@ function checkRule(rule) {
 module.exports = function rulesRouter(app) {
   let id = _.last(rules).id;
 
+  app.delete('/rest/rules/:id', (req, res) => {
+    const id = Number(req.params.id);
+    console.info(`DELETE /rest/rules/${id}`)
+    _.remove(rules, (r) => {
+      return r.id === id;
+    });
+    return res.status(200).json(rules);
+  })
+
   app.get('/rest/rules', (req, res) => {
     console.info('GET /rest/rules');
     return res.status(200).json(rules);

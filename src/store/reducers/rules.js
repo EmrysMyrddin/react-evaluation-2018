@@ -1,4 +1,4 @@
-import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE } from '../actions/rules'
+import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE, REMOVE_RULE } from '../actions/rules'
 
 const initialState = []
 
@@ -40,6 +40,10 @@ const rules = (state = initialState, action) => {
         ...state,
         rule,
       ]
+    }
+    case REMOVE_RULE: {
+      const { rules } = action.payload;
+      return rules;
     }
     default: {
       return state

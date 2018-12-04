@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import LikeBtn from './LikeBtn'
+import TrashBtn from './TrashBtn'
 
 class Rule extends React.Component {
   static propTypes = {
@@ -53,6 +54,7 @@ class Rule extends React.Component {
             <div className="btn-group btn-group-xs pull-right">
               <LikeBtn type="like" id={rule.id} />
               <LikeBtn type="dislike" id={rule.id} />
+              <TrashBtn id={rule.id}/>
             </div>
           </div>
         </div>
