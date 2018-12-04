@@ -92,7 +92,7 @@ module.exports = function rulesRouter(app) {
     const rule = _.find(rules, r => r.id === paramId);
 
     if (!rule) {
-      res.status(404).send();
+      return res.status(404).send();
     }
 
     rule.likes += 1;
@@ -106,10 +106,23 @@ module.exports = function rulesRouter(app) {
     const rule = _.find(rules, r => r.id === paramId);
 
     if (!rule) {
-      res.status(404).send();
+      return res.status(404).send();
     }
 
     rule.dislikes += 1;
     res.status(200).json(rule);
   });
+
+  app.delete('/rest/rules/:id', (req, res) => {
+    console.info(`DELETE /rest/rules/${req.params.id}`);
+
+    const id = Number(req.params.id)
+
+    if(!some(rules, { id })) {
+      return res.status(404).send()
+    }
+
+    rules = reject(rules, { id })
+    res.status(200).send()
+  })
 };
