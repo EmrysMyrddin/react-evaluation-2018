@@ -118,11 +118,11 @@ module.exports = function rulesRouter(app) {
 
     const id = Number(req.params.id)
 
-    if(!some(rules, { id })) {
+    if(!_.some(rules, { id })) {
       return res.status(404).send()
     }
 
-    rules = reject(rules, { id })
+    rules = _.reject(rules, { id })
     res.status(200).send()
   })
 };
