@@ -2,6 +2,7 @@ import React from 'react'
 import { func } from 'prop-types'
 import { Field } from 'redux-form'
 import { required, length } from 'redux-form-validators'
+import { Link } from 'react-router-dom'
 import Input from './Input'
 
 const descriptionValidator = [

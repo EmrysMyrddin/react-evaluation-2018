@@ -4,8 +4,10 @@
  * GET /rest/rules/:id
  * POST /rest/rules
  * PUT /rest/rules/:id
+ * PUT /rest/rules/:id
  * POST /rest/rules/:id/likes
  * POST /rest/rules/:id/dislikes
+ * 
  */
 
 const _ = require('lodash');
