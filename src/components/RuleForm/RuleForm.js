@@ -37,6 +37,11 @@ const RuleForm = ({ handleSubmit }) => (
           label="Description"
           validate={descriptionValidator}
         />
+        <Field
+          component={Input}
+          name="tags"
+          label="Tags"          
+        />
         <button type="submit" className="btn btn-primary pull-right">Submit</button>
       </form>
     </div>

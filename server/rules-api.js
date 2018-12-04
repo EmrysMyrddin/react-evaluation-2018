@@ -44,17 +44,25 @@ module.exports = function rulesRouter(app) {
     console.info('  => body: ', req.body);
 
     let body = req.body;
-
     if (!body || _.has(body, 'id') || !checkRule(body)) {
       return res.status(400).send();
     }
 
     id += 1;
     body.id = id;
+
+    // MODIFICATION : ajout de la gestion des tags, séparés par une virgule dans le formulaire
+    if (body.tags === undefined) {
+      body.tags = [];
+    } else if (body.tags.includes(",")) {
+      body.tags = body.tags.split(",")
+    } else {
+      body.tags = [body.tags]
+    }
+    
     body = _.defaults(body, {
       likes: 0,
-      dislikes: 0,
-      tags: [],
+      dislikes: 0
     });
 
     rules.push(body);
