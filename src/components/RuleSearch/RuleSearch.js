@@ -17,24 +17,19 @@ class RuleSearch extends React.Component {
   }
 
   state = {
-    text: ""
+    text: "",
+    nbLike: 0
   }
-
-  rechercher = (texte) => {
-    console.log(this.state.text)
-  }
-
-  trier = (test) => {
-    console.log("On entre dans la fonction")
-    console.log(test)
+  
+  trier = (test, nbLike) => {
     const { rules } = this.props
     return rules
-      .filter((rule) => rule.title.includes(test))
-      .map(rule => <Rule key={rule.id} rule={rule}/> )
+    .filter((rule) => rule.likes>=nbLike && rule.title.toUpperCase().includes(test.toUpperCase()))
+    .map(rule => <Rule key={rule.id} rule={rule}/> )
   }
 
   render() {
-    return <div><input value={this.state.texte} onChange={e => this.setState({text: e.target.value})} type="text" placeholder="Recherche..."/><button>Go</button><div>{this.trier(this.state.text)}</div></div>
+    return <div><input value={this.state.text} onChange={e => this.setState({text: e.target.value})} type="text" placeholder="Recherche..."/><div><input value={this.state.nbLike} onChange={e => this.setState({nbLike: e.target.value})} type="number" placeholder="Minimum de like"/>  {this.trier(this.state.text, this.state.nbLike)}</div></div>
   }
 }
 
