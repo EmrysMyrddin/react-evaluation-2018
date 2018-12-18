@@ -7,6 +7,7 @@
  * PUT /rest/rules/:id
  * POST /rest/rules/:id/likes
  * POST /rest/rules/:id/dislikes
+ * DELETE /rest/rules/:id
  * 
  */
 
@@ -113,5 +114,13 @@ module.exports = function rulesRouter(app) {
 
     rule.dislikes += 1;
     res.status(200).json(rule);
+  });
+
+  app.delete('/rest/rules/:id', (req, res) => {
+    console.info(`DELETE /rest/rules/${req.params.id}`);
+
+    const paramId = Number(req.params.id);
+    _.remove(rules, (r) => { return r.id === paramId });
+    return res.status(200).json(rules);
   });
 };

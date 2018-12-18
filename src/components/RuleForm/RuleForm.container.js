@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
 
     else {
-      const createdRule = await dispatch(addRule(values))
+      await dispatch(addRule(values))
       ownProps.history.push(`/`)
     }
   },

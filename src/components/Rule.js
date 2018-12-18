@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import LikeBtn from './LikeBtn'
-import RuleList from './RuleList'
+import DeleteBtn from './DeleteBtn'
 
 class Rule extends React.Component {
   static propTypes = {
@@ -46,6 +46,9 @@ class Rule extends React.Component {
             {rule.tags.map(tag => (
               <span key={tag} className="badge">{tag}</span>
             ))}
+            <div className="btn-group btn-group-xs pull-right">
+              <DeleteBtn id={rule.id} />
+            </div>
             <div className="btn-group btn-group-xs pull-right">
               <Link to={`/edit/${rule.id}`} className="btn btn-primary" title="Update">
                 <i className="glyphicon glyphicon-pencil" />
