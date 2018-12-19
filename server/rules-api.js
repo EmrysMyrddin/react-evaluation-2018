@@ -122,7 +122,10 @@ module.exports = function rulesRouter(app) {
       return res.status(404).send()
     }
 
-    rules = _.reject(rules, { id })
-    res.status(200).send()
+    _.remove(rules, (rule) => {
+      return rule.id === id;
+    });
+
+    return res.status(200).json(rules)
   })
 };
