@@ -21,10 +21,10 @@ class RuleSearch extends React.Component {
     nbLike: 0
   }
   
-  trier = (test, nbLike) => {
+  trier = (recherche, nbLike) => {
     const { rules } = this.props
     return rules
-    .filter((rule) => rule.likes>=nbLike && rule.title.toUpperCase().includes(test.toUpperCase()))
+    .filter((rule) => rule.likes>=nbLike && rule.title.toUpperCase().includes(recherche.toUpperCase()))
     .map(rule => <Rule key={rule.id} rule={rule}/> )
   }
 
