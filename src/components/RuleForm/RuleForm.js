@@ -15,6 +15,10 @@ const descriptionValidator = [
   }),
 ]
 
+const tagsValidator = value => {
+  value && !/^[#].*/.test(value) ? "Tag invalide" : undefined
+}
+
 const RuleForm = ({ handleSubmit }) => (
   <div className="panel panel-primary">
     <div className="panel-heading">
@@ -36,6 +40,11 @@ const RuleForm = ({ handleSubmit }) => (
           name="description"
           label="Description"
           validate={descriptionValidator}
+        />
+        <Field
+          component={Input}
+          name="tag"
+          label="Tags"
         />
         <button type="submit" className="btn btn-primary pull-right">Submit</button>
       </form>

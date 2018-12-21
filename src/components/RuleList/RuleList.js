@@ -1,8 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Rule from '../Rule'
+import Search from '../Search/Search'
 
 class RuleList extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   static propTypes = {
     rules: PropTypes.array,
     loadRules: PropTypes.func,
@@ -18,7 +24,14 @@ class RuleList extends React.Component {
 
   render() {
     const { rules } = this.props
-    return rules.map(rule => <Rule key={rule.id} rule={rule} />)
+    const rulesView = rules.map(rule => <Rule key={rule.id} rule={rule} />)
+
+    return (
+      <div>
+        <Search />
+        {rulesView}
+      </div>
+    ) 
   }
 }
 
