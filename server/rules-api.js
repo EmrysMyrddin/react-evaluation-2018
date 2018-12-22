@@ -59,7 +59,7 @@ module.exports = function rulesRouter(app) {
     } else {
       body.tags = [body.tags]
     }
-    
+
     body = _.defaults(body, {
       likes: 0,
       dislikes: 0
@@ -119,5 +119,16 @@ module.exports = function rulesRouter(app) {
 
     rule.dislikes += 1;
     res.status(200).json(rule);
+  });
+
+  app.delete('/rest/rules/:id', (req, res) => {
+    console.info(`DELETE /rest/rules/${req.params.id}`);
+
+    const id = Number(req.params.id)
+
+    _.remove(rules, (rule) => {
+      return rule.id === id;
+    });
+    return res.status(200).json(rules)
   });
 };

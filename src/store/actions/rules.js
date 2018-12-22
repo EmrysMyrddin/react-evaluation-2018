@@ -1,10 +1,10 @@
 import * as fetch from '../../fetch'
-
 export const RULES_LOADED = 'RULES_LOADED'
 export const DO_LIKE = 'DO_LIKE'
 export const DO_DISLIKE = 'DO_DISLIKE'
 export const UPDATE_RULE = 'UPDATE_RULE'
 export const ADD_RULE = 'ADD_RULE'
+export const DELETE_RULE = 'DELETE_RULE'
 
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
@@ -66,4 +66,16 @@ export const addRule = rule => async (dispatch) => {
   })
 
   return createdRule
+}
+
+export const deleteRule = id => async (dispatch) => {
+  const result = await fetch.del(`/rest/rules/${id}`)
+  const rules = await result.json()
+
+  dispatch({
+    type: DELETE_RULE,
+    payload: {
+      rules,
+    },
+  })
 }

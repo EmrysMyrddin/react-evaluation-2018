@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import LikeBtn from './LikeBtn'
+import DeleteBtn from './DeleteBtn'
 
 class Rule extends React.Component {
   static propTypes = {
@@ -49,6 +50,9 @@ class Rule extends React.Component {
               <Link to={`/edit/${rule.id}`} className="btn btn-primary" title="Update">
                 <i className="glyphicon glyphicon-pencil" />
               </Link>
+            </div>
+            <div className="btn-group btn-group-xs pull-right">
+              <DeleteBtn id={rule.id} />
             </div>
             <div className="btn-group btn-group-xs pull-right">
               <LikeBtn type="like" id={rule.id} />

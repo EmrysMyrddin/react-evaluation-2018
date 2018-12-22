@@ -18,4 +18,4 @@ export const put = (url, data) =>
     },
   })
 
-export const del = url => fetch(url, { method: 'DELETE' })
+export const del = url => fetch(url, {method: 'DELETE'})
