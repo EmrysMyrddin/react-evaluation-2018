@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Rule from '../Rule'
+import SearchBar from '../SearchBar'
 
 class RuleList extends React.Component {
   static propTypes = {
@@ -18,7 +19,13 @@ class RuleList extends React.Component {
 
   render() {
     const { rules } = this.props
-    return rules.map(rule => <Rule key={rule.id} rule={rule} />)
+    const ruleList = rules.map(rule => <Rule key={rule.id} rule={rule} />)
+    return (
+      <div class=""className="searchAndRules">
+        <SearchBar></SearchBar>
+        {ruleList}
+      </div>
+    )
   }
 }
 
