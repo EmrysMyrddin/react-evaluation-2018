@@ -30,7 +30,7 @@ export const doLike = id => async (dispatch) => {
 }
 
 export const doDislike = id => async (dispatch) => {
-  await fetch.post(`/rest/rules/${id}/dislike`)
+  await fetch.post(`/rest/rules/${id}/dislikes`)
 
   dispatch({
     type: DO_DISLIKE,
