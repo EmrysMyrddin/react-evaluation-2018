@@ -1,4 +1,4 @@
-import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE } from '../actions/rules'
+import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE} from '../actions/rules'
 
 const initialState = []
 

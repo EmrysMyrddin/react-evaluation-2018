@@ -4,6 +4,7 @@ import { rulesLoaded } from '../../store/actions/rules'
 
 const mapStateToProps = state => ({
   rules: state.rules,
+  filter: state.filter.query
 })
 
 const mapDispatchToProps = dispatch => ({

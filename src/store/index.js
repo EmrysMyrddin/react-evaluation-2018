@@ -1,9 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { reducer as form } from 'redux-form'
+
+import filter from './reducers/filter'
 import rules from './reducers/rules'
 
 const reducer = combineReducers({
+  filter,
   rules,
   form,
 })
