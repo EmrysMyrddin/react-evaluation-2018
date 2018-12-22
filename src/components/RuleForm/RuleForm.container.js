@@ -15,10 +15,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onSubmit: async (values) => {
-    if (ownProps.match.params.id) dispatch(updateRule(values))
+    if (ownProps.match.params.id) {
+      dispatch(updateRule(values))
+      ownProps.history.push(`/`)
+      }
     else {
       const createdRule = await dispatch(addRule(values))
-      ownProps.history.push(`/edit/${createdRule.id}`)
+      ownProps.history.push(`/`)
     }
   },
 })
