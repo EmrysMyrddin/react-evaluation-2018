@@ -6,6 +6,7 @@ export const DO_DISLIKE = 'DO_DISLIKE'
 export const UPDATE_RULE = 'UPDATE_RULE'
 export const ADD_RULE = 'ADD_RULE'
 export const DEL_RULE = 'DEL_RULE'
+export const FILTERED_RULES = 'FILTERED_RULES'
 
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
@@ -53,6 +54,16 @@ export const updateRule = rule => async (dispatch) => {
   })
 
   return updatedRule
+}
+
+export const filteredRule = query => async (dispatch) => {
+  const result = await fetch.get(`/rest/rules?filter=${query}`);
+  const filteredRules = await result.json();
+
+  dispatch({
+    type: FILTERED_RULES,
+    payload: { filteredRules: filteredRules }
+  });
 }
 
 export const addRule = rule => async (dispatch) => {
