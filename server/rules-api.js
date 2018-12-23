@@ -51,6 +51,15 @@ module.exports = function rulesRouter(app) {
 
     id += 1;
     body.id = id;
+
+    if (body.tags === undefined) {
+      body.tags = [];
+    } else if (body.tags.includes(";")) {
+      body.tags = body.tags.split(";")
+    } else {
+      body.tags = [body.tags]
+    }
+
     body = _.defaults(body, {
       likes: 0,
       dislikes: 0,

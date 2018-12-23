@@ -43,9 +43,7 @@ class Rule extends React.Component {
         </div>
         <div className="panel-footer">
           <div className="btn-toolbar">
-            {rule.tags.map(tag => (
-              <span key={tag} className="badge">{tag}</span>
-            ))}
+            {rule.tags.map(tags => (<span key={tags} className="badge">{tags}</span>))}
             <div className="btn-group btn-group-xs pull-right">
               <Link to={`/edit/${rule.id}`} className="btn btn-primary" title="Update">
                 <i className="glyphicon glyphicon-pencil" />
