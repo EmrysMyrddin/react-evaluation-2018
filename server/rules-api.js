@@ -95,7 +95,7 @@ module.exports = function rulesRouter(app) {
     const rule = _.find(rules, r => r.id === paramId);
 
     if (!rule) {
-      res.status(404).send();
+      return res.status(404).send();
     }
 
     rule.likes += 1;
@@ -109,7 +109,7 @@ module.exports = function rulesRouter(app) {
     const rule = _.find(rules, r => r.id === paramId);
 
     if (!rule) {
-      res.status(404).send();
+      return res.status(404).send();
     }
 
     rule.dislikes += 1;
