@@ -69,21 +69,52 @@ export const rulesSearch = (choose, search) => async (dispatch) => {
     if(rule.tags.length>0 && (rule.tag === undefined || rule.tag === ""))
     rule.tag = "#"+rule.tags.join("#")
   })
-  let rulesSorted = []
+  let rulesFilters = []
 
   if(rules.filter(rule => display(rule, choose, search)).length > 0)
   {
-    rulesSorted = rules.filter(rule => display(rule, choose, search))
+    rulesFilters = rules.filter(rule => display(rule, choose, search))
   }
   else
   {
-    rulesSorted = rules
+    rulesFilters = rules
   }
 
   dispatch({
     type: RULES_LOADED,
     payload: {
-      rules: rulesSorted,
+      rules: rulesFilters,
+    },
+  })
+}
+
+const compare = (ruleA, ruleB, increasing) => {
+  if (ruleA < ruleB) return increasing ? -1 : 1;
+  else if (ruleA > ruleB) return increasing ? 1 : -1;
+  else return 0;
+}
+
+export const rulesSort = (choose, order) => async (dispatch) => {
+  const res = await fetch.get('/rest/rules')
+  const rules = await res.json()
+
+  if(choose === "title")
+  {
+    rules.sort((ruleA, ruleB) => compare(ruleA.title, ruleB.title, order === "increasing" ? true : false))
+  }
+  else if(choose === "opinionDown")
+  {
+    rules.sort((ruleA, ruleB) => compare(ruleA.dislikes, ruleB.dislikes, order === "increasing" ? true : false))
+  }
+  else if(choose === "opinionUp")
+  {
+    rules.sort((ruleA, ruleB) => compare(ruleA.likes, ruleB.likes, order === "increasing" ? true : false))
+  }
+
+  dispatch({
+    type: RULES_LOADED,
+    payload: {
+      rules,
     },
   })
 }

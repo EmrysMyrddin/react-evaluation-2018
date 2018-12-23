@@ -3,16 +3,16 @@ import {Search, choose} from './Search'
 import { rulesSearch } from '../../store/actions/rules'
 
 const mapStateToProps = (state) => {
-    return {}
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onChangeSearch: (event) => dispatch(rulesSearch(choose,event.target.value)),
   }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      onChangeSearch: (event) => dispatch(rulesSearch(choose,event.target.value)),
-    }
-  }
-  
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Search)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Search)

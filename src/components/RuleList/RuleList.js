@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Rule from '../Rule'
 import Search from '../Search/Search'
+import Sort from '../Sort/Sort'
 
 class RuleList extends React.Component {
 
@@ -29,6 +30,7 @@ class RuleList extends React.Component {
     return (
       <div>
         <Search />
+        <Sort />
         {rulesView}
       </div>
     ) 

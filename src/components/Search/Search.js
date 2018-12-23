@@ -8,7 +8,7 @@ export let choose = "all"
 const Search = ({ onChangeSearch }) => (
   <div>
     <form>
-      Rechercher par :
+      Rechercher dans :
     <select style={{margin: "10px"}} name="choose" onChange={onChangeChoose}>
       <option value="all" selected="true">Tout</option>
       <option value="title">Titre</option>

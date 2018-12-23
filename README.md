@@ -1,6 +1,22 @@
 Projet réalisé par Théo MAHAUDA, Mathieu PINEAU et Victor TAIOCCHI.
+LP MIAR Alternance IUT de Nantes
 
+Nouvelles fonctionnalités :
 
+- Possibilité de supprimer des règles ;
+- Possibilité d'ajouter/modifier/supprimer des tags dans les règles avec la syntaxe #mot1#mot2 ;
+- Possibilité de filtrer des règles en tapant les premiers mots dans une barre de recherche en sélectionnant un type dans une liste déroulante. La recherche peut se porter :
+    * Dans les titres de chaque règle ;
+    * Dans les descriptions de chaque règle ;
+    * Dans les tags de chaque règle ;
+    * Dans les likes/dislikes de chaque règle ;
+    * Dans tout type (titre, description, tag et likes/dislikes) de chaque règle.
+- Possibilité de trier des règles en ordonnant par ordre croisant/décroissant :
+    * Nombre de likes/dislikes ;
+    * Nom alphabétique des titres des règles.
+- Quelques anomalies corrigées :
+    * Lors du clique sur dislike, ce dernier n'effectué pas l'action car l'url fut mal formé (oubli du s dans dislikes) dans la fonction doDislike du fichier rules.js dans le dossier actions : await fetch.post(`/rest/rules/${id}/dislike`) au lieu de await fetch.post(`/rest/rules/${id}/dislikes`)
+    * Lors d'une création d'une règle avec préalablement une modification d'une règle, ce dernier gardé en mémoire la règle modifiée. Par conséquent la ligne reduxForm({ form: 'ruleEdit', enableReinitialize: true, destroyOnUnmount: false }) a été modifiée par destroyOnUnmont: true pour réinitialiser à chaque fois le userform dans le fichier RuleForm.container.js du composant RuleForm
 _______________________________________________________________________________________________________________________________
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
