@@ -15,8 +15,8 @@ Nouvelles fonctionnalités :
     * Nombre de likes/dislikes ;
     * Nom alphabétique des titres des règles.
 - Quelques anomalies corrigées :
-    * Lors du clique sur dislike, ce dernier n'effectué pas l'action car l'url fut mal formé (oubli du s dans dislikes) dans la fonction doDislike du fichier rules.js dans le dossier actions : await fetch.post(`/rest/rules/${id}/dislike`) au lieu de await fetch.post(`/rest/rules/${id}/dislikes`)
-    * Lors d'une création d'une règle avec préalablement une modification d'une règle, ce dernier gardé en mémoire la règle modifiée. Par conséquent la ligne reduxForm({ form: 'ruleEdit', enableReinitialize: true, destroyOnUnmount: false }) a été modifiée par destroyOnUnmont: true pour réinitialiser à chaque fois le userform dans le fichier RuleForm.container.js du composant RuleForm
+    * Lors du clique sur dislike, ce dernier n'effectué pas l'action car l'url fut mal formé (oubli du s dans dislikes) dans la fonction doDislike du fichier rules.js dans le dossier actions : await fetch.post(`/rest/rules/${id}/dislike`) au lieu de await fetch.post(`/rest/rules/${id}/dislikes`) ;
+    * Lors d'une création d'une règle avec préalablement une modification d'une règle, ce dernier gardé en mémoire la règle modifiée. Par conséquent la ligne reduxForm({ form: 'ruleEdit', enableReinitialize: true, destroyOnUnmount: false }) a été modifiée par destroyOnUnmont: true pour réinitialiser à chaque fois le userform dans le fichier RuleForm.container.js du composant RuleForm.
 _______________________________________________________________________________________________________________________________
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
