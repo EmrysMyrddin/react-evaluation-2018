@@ -5,7 +5,8 @@ import { formValueSelector } from 'redux-form'
 
 const mapStateToProps = state => ({
   rules: state.rules,
-  search: formValueSelector("search")(state, "search")
+  search: formValueSelector("search")(state, "search"),
+  sort: formValueSelector("search")(state, "sort")
 })
 
 const mapDispatchToProps = dispatch => ({
