@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onSubmit: async (values) => {
     if (ownProps.match.params.id) {
-      dispatch(updateRule(values))
+      await dispatch(updateRule(values))
       ownProps.history.push(`/`)
     }
 
@@ -32,5 +32,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({ form: 'ruleEdit', enableReinitialize: true, destroyOnUnmount: false }),
+  reduxForm({ form: 'ruleEdit', enableReinitialize: true, destroyOnUnmount: true }),
 )(RuleForm)

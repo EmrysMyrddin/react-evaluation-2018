@@ -7,10 +7,13 @@ export const UPDATE_RULE = 'UPDATE_RULE'
 export const ADD_RULE = 'ADD_RULE'
 export const DELETE_RULE = 'DELETE_RULE'
 
-
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
   const rules = await res.json()
+  rules.map(rule => {
+    if(rule.tags.length>0 && (rule.tag === undefined || rule.tag === ""))
+    rule.tag = "#"+rule.tags.join("#")
+  })
 
   dispatch({
     type: RULES_LOADED,
@@ -62,6 +65,10 @@ const display = (rule, choose, search) => {
 export const rulesSearch = (choose, search) => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
   const rules = await res.json()
+  rules.map(rule => {
+    if(rule.tags.length>0 && (rule.tag === undefined || rule.tag === ""))
+    rule.tag = "#"+rule.tags.join("#")
+  })
   let rulesSorted = []
 
   if(rules.filter(rule => display(rule, choose, search)).length > 0)
@@ -105,7 +112,6 @@ export const doDislike = id => async (dispatch) => {
 
 export const updateRule = rule => async (dispatch) => {
   rule.tags = rule.tag.split("#")
-  rule.tags.shift();
   const result = await fetch.put(`/rest/rules/${rule.id}`, rule)
   const updatedRule = await result.json()
 
@@ -120,6 +126,7 @@ export const updateRule = rule => async (dispatch) => {
 }
 
 export const addRule = rule => async (dispatch) => {
+  rule.tags = rule.tag.split("#")
   const result = await fetch.post('/rest/rules', rule)
   const createdRule = await result.json()
 

@@ -13,6 +13,7 @@ class Rule extends React.Component {
       likes: PropTypes.number,
       dislikes: PropTypes.number,
       tags: PropTypes.arrayOf(PropTypes.string),
+      tag: PropTypes.string,
     }).isRequired,
     description: PropTypes.string,
   }

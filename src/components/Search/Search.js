@@ -23,8 +23,7 @@ const Search = ({ onChangeSearch }) => (
 )
 
 Search.propTypes = {
-  onChangeSearch: func,
-  placeholder: string,
+  onChangeSearch: func
 }
 
 const onChangeChoose = (event) => {
