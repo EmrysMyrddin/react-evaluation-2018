@@ -23,6 +23,11 @@ module.exports = function rulesRouter(app) {
   let id = _.last(rules).id;
 
   app.get('/rest/rules', (req, res) => {
+    const filter = req.query.filter;
+    if (filter) {
+      const rulesReturned = _.filter(rules, (rule) => { return rule.title.toLowerCase().includes(filter);});
+      return res.status(200).json(rulesReturned);
+    }
     console.info('GET /rest/rules');
     return res.status(200).json(rules);
   });

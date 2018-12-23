@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Rule from '../Rule'
+import Filter from '../Filter'
 
 class RuleList extends React.Component {
   static propTypes = {
@@ -18,8 +19,12 @@ class RuleList extends React.Component {
 
   render() {
     const { rules } = this.props
-    return rules.map(rule => <Rule key={rule.id} rule={rule} />)
-  }
+    return (
+      <div>
+        <Filter></Filter>
+        {rules.map(rule => <Rule rule={rule} key={rule.id}/>)}
+      </div>
+    )  }
 }
 
 export default RuleList
