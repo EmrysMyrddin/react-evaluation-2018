@@ -1,4 +1,5 @@
-import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE } from '../actions/rules'
+import { RULES_LOADED, DO_LIKE, DO_DISLIKE, UPDATE_RULE, ADD_RULE, DELETE_RULE } from '../actions/rules'
+import reject from 'lodash/reject'
 
 const initialState = []
 
@@ -40,6 +41,9 @@ const rules = (state = initialState, action) => {
         ...state,
         rule,
       ]
+    }
+    case DELETE_RULE: {
+      return reject(state, (rule) => rule.id === action.payload.id)
     }
     default: {
       return state

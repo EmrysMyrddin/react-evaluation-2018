@@ -10,7 +10,13 @@ const mapStateToProps = (state, ownProps) => {
 
   if (!rule) return {}
 
-  return { initialValues: rule }
+  const initialValues = {
+    ...rule,
+    tags: rule.tags.join(", ")
+  }
+
+  //ici insérer un join pour recréer une string à partir d'une array
+  return { initialValues }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -23,8 +29,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 })
 
-// const RuleFormWithReduxForm = reduxForm({ name: 'ruleEdit' })(RuleForm)
-// export default connect(mapStateToProps)(RuleFormWithReduxForm)
+ //const RuleFormWithReduxForm = reduxForm({ name: 'ruleEdit' })(RuleForm)
+ //export default connect(mapStateToProps)(RuleFormWithReduxForm)
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

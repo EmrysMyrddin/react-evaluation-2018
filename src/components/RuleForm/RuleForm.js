@@ -15,6 +15,17 @@ const descriptionValidator = [
   }),
 ]
 
+const tagsValidator = [
+  length({
+    min: 3,
+    max: 100,
+    msg: {
+      tooLong: 'Trop de tags!',
+      tooShort: 'Le tag est trop court!',
+    },
+  }),
+]
+
 const RuleForm = ({ handleSubmit }) => (
   <div className="panel panel-primary">
     <div className="panel-heading">
@@ -28,7 +39,7 @@ const RuleForm = ({ handleSubmit }) => (
           label="Titre"
           validate={[
             required({ msg: 'Champ obligatoire !' }),
-            length({ max: 50, msg: { tooLong: 'Le titre est trop long !' } }),
+            length({ max: 100, msg: { tooLong: 'Le titre est trop long !' } }),
           ]}
         />
         <Field
@@ -36,6 +47,12 @@ const RuleForm = ({ handleSubmit }) => (
           name="description"
           label="Description"
           validate={descriptionValidator}
+        />
+        <Field
+          component={Input}
+          name="tags"
+          label="tags"
+          validate={tagsValidator}
         />
         <button type="submit" className="btn btn-primary pull-right">Submit</button>
       </form>
