@@ -5,6 +5,8 @@ export const DO_LIKE = 'DO_LIKE'
 export const DO_DISLIKE = 'DO_DISLIKE'
 export const UPDATE_RULE = 'UPDATE_RULE'
 export const ADD_RULE = 'ADD_RULE'
+export const DELETE_RULE = 'DELETE_RULE'
+
 
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
@@ -42,6 +44,7 @@ export const doDislike = id => async (dispatch) => {
 
 export const updateRule = rule => async (dispatch) => {
   const result = await fetch.put(`/rest/rules/${rule.id}`, rule)
+
   const updatedRule = await result.json()
 
   dispatch({
@@ -66,4 +69,19 @@ export const addRule = rule => async (dispatch) => {
   })
 
   return createdRule
+}
+
+export const deleteRule = id => async(dispatch) => {
+
+  await fetch.del(`/rest/rules/${id}`)
+
+  const res = await fetch.get('/rest/rules')
+  const rules = await res.json()
+
+  dispatch({
+    type: DELETE_RULE,
+    payload: {
+      rules: rules,
+    },
+  })
 }

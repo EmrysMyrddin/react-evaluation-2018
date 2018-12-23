@@ -14,18 +14,20 @@ class RuleList extends React.Component {
   static defaultProps = {
     rules: [],
     search: "",
-    sort: ""
+    sort: "asc"
   }
 
   componentDidMount = () => {
     this.props.loadRules()
   }
 
-  render() {
+  render = () => {
     const { rules, search, sort } = this.props
     const filteredRules = rules.filter(rule => rule.title.toLowerCase().includes(search.toLowerCase()))
 
-    console.log(sort);
+    /*
+
+    Nous avons tenté de réalisez un tri des lois par likes ou dislikes
 
     if(sort == "asc") {
       if (filteredRules)
@@ -58,7 +60,7 @@ class RuleList extends React.Component {
             return -1
         })
     }
-
+    */
 
     return (filteredRules) ? filteredRules.map(rule => <Rule key={rule.id} rule={rule} />) : rules.map(rule => <Rule key={rule.id} rule={rule} />)
   }

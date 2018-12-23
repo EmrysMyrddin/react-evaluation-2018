@@ -1,8 +1,11 @@
 import React from 'react'
-import { oneOf } from 'prop-types'
+import ReactDOM from 'react-dom'
+import { oneOf, PropTypes } from 'prop-types'
 
-const SortBtn = ({ type }) => (
-  <button className="btn btn-default" value="type">
+
+
+const SortBtn = ({ type, handleSubmit }) => (
+  <button className="btn btn-default" value="type" onClick={handleSubmit}>
     <i className={`glyphicon glyphicon-sort-by-attributes${type === 'asc' ? '' : '-alt'}`} />
   </button>
 )

@@ -112,4 +112,19 @@ module.exports = function rulesRouter(app) {
     rule.dislikes += 1;
     res.status(200).json(rule);
   });
+
+  app.del('/rest/rules/:id', (req, res) => {
+    console.info(`DELETE /rest/rules/${req.params.id}`);
+
+    const paramId = Number(req.params.id);
+    const rule = _.find(rules, r => r.id === paramId);
+
+    if (!rule) {
+      res.status(404).send()
+    }
+
+    _.remove(rules, r => r.id === paramId);
+    res.status(200).send();
+
+  })
 };
