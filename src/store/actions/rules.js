@@ -5,6 +5,7 @@ export const DO_LIKE = 'DO_LIKE'
 export const DO_DISLIKE = 'DO_DISLIKE'
 export const UPDATE_RULE = 'UPDATE_RULE'
 export const ADD_RULE = 'ADD_RULE'
+export const SEARCH_RULES = 'SEARCH_RULES'
 
 export const rulesLoaded = () => async (dispatch) => {
   const res = await fetch.get('/rest/rules')
@@ -18,6 +19,9 @@ export const rulesLoaded = () => async (dispatch) => {
   })
 }
 
+
+
+
 export const doLike = id => async (dispatch) => {
   await fetch.post(`/rest/rules/${id}/likes`)
 
@@ -30,7 +34,7 @@ export const doLike = id => async (dispatch) => {
 }
 
 export const doDislike = id => async (dispatch) => {
-  await fetch.post(`/rest/rules/${id}/dislike`)
+  await fetch.post(`/rest/rules/${id}/dislikes`)
 
   dispatch({
     type: DO_DISLIKE,
@@ -52,6 +56,18 @@ export const updateRule = rule => async (dispatch) => {
   })
 
   return updatedRule
+}
+
+export const searchRule = query => async (dispatch) => {
+  const result = await fetch.get(`/rest/rules?filter=${query}`);
+  const searchedRules = await result.json();
+
+  dispatch({
+    type: SEARCH_RULES,
+    payload: {
+      searchedRules: searchedRules
+    }
+  });
 }
 
 export const addRule = rule => async (dispatch) => {
